@@ -39,6 +39,10 @@ router.post('/', (req, res) => {
       return res.status(400).send({ message: err.message });
     }
 
+    if (!req.file) {
+      return res.status(400).send({ message: 'No image file provided' });
+    }
+
     res.status(200).send({
       message: 'Image uploaded successfully',
       image: `/${req.file.path}`,
