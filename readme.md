@@ -4,7 +4,7 @@
 
 <img src="./frontend/public/images/screens.png">
 
-This project is part of my [MERN Stack From Scratch | eCommerce Platform](https://www.traversymedia.com/mern-stack-from-scratch) course. It is a full-featured shopping cart with PayPal & credit/debit payments.
+This project is maintained by Aditya. It is a full-featured shopping cart with PayPal & credit/debit payments.
 
 This is version 2.0 of the app, which uses Redux Toolkit. The first version can be found [here](https://proshopdemo.dev)
 
@@ -390,7 +390,7 @@ export default defineConfig({
 ```
 
 By default the eslint config that comes with a Vite React project treats some
-rules from React as errors which will break your app if you are following Brad exactly.
+rules from React as errors which will break your app if you are following the original tutorial exactly.
 You can change those rules to give a warning instead of an error by modifying
 the **eslintrc.cjs** that came with your Vite project.
 
@@ -546,7 +546,7 @@ dependencies in [frontend/package.json](frontend/package.json)
 
 The MIT License
 
-Copyright (c) 2023 Traversy Media https://traversymedia.com
+Copyright (c) 2023 Aditya
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
