@@ -12,7 +12,7 @@
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-    "generate-toc": "markdown-toc -i readme.md"
+    "generate-toc": "markdown-toc -i README.md"
   },
   "author": "Brad Traversy",
   "license": "MIT",
