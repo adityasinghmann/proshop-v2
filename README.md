@@ -5,14 +5,15 @@ A full-stack eCommerce application built with **MongoDB, Express, React, Node.js
 ## Important Notes (Read First)
 - This app requires a running **MongoDB database** and valid `.env` configuration before starting.
 - The backend reads environment variables from a root `.env` file.
-- Payment flow needs a valid `PAYPAL_CLIENT_ID` for the PayPal buttons to work.
+- Default payment method is **Cash on Delivery** (no external payment setup required).
+- PayPal is optional and only needed if you choose PayPal checkout.
 - Uploads are stored in `/uploads` (development) and served from `/var/data/uploads` in production mode.
 
 ## Prerequisites
 - Node.js 18+ (recommended)
 - npm 9+
 - MongoDB Atlas (or local MongoDB)
-- PayPal Developer client ID
+- PayPal Developer client ID (optional, only for PayPal checkout)
 
 ## 1) Environment Setup
 Create a `.env` file in the project root:
@@ -22,7 +23,7 @@ NODE_ENV=development
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=replace_with_a_strong_secret
-PAYPAL_CLIENT_ID=your_paypal_client_id
+PAYPAL_CLIENT_ID=your_paypal_client_id # optional for PayPal flow
 PAGINATION_LIMIT=8
 ```
 
@@ -79,7 +80,8 @@ After backend starts, verify API is running:
 
 ## Common Setup Issues
 - **`MONGO_URI` undefined / connection error:** Ensure `.env` exists in root and `MONGO_URI` is valid.
-- **PayPal button not loading:** Verify `PAYPAL_CLIENT_ID` in `.env`.
+- **PayPal button not loading:** Verify `PAYPAL_CLIENT_ID` in `.env` (only needed if using PayPal).
+- **Want easiest setup:** Keep payment method as Cash on Delivery at checkout.
 - **Image upload fails:** Use `multipart/form-data` with field name `image`.
 - **Port conflict:** Change `PORT` in `.env`.
 

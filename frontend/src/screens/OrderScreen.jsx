@@ -36,10 +36,12 @@ const OrderScreen = () => {
     data: paypal,
     isLoading: loadingPayPal,
     error: errorPayPal,
-  } = useGetPaypalClientIdQuery();
+  } = useGetPaypalClientIdQuery(undefined, {
+    skip: !order || order.paymentMethod !== 'PayPal' || order.isPaid,
+  });
 
   useEffect(() => {
-    if (!errorPayPal && !loadingPayPal && paypal.clientId) {
+    if (!errorPayPal && !loadingPayPal && paypal?.clientId) {
       const loadPaypalScript = async () => {
         paypalDispatch({
           type: 'resetOptions',
@@ -50,7 +52,7 @@ const OrderScreen = () => {
         });
         paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
       };
-      if (order && !order.isPaid) {
+      if (order && !order.isPaid && order.paymentMethod === 'PayPal') {
         if (!window.paypal) {
           loadPaypalScript();
         }
@@ -211,7 +213,7 @@ const OrderScreen = () => {
                   <Col>${order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              {!order.isPaid && (
+              {!order.isPaid && order.paymentMethod === 'PayPal' && (
                 <ListGroup.Item>
                   {loadingPay && <Loader />}
 
@@ -236,6 +238,14 @@ const OrderScreen = () => {
                       </div>
                     </div>
                   )}
+                </ListGroup.Item>
+              )}
+
+              {!order.isPaid && order.paymentMethod === 'CashOnDelivery' && (
+                <ListGroup.Item>
+                  <Message variant='info'>
+                    Cash on Delivery selected. Payment will be collected at delivery.
+                  </Message>
                 </ListGroup.Item>
               )}
 
